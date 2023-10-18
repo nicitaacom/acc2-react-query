@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react"
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+
 interface LayoutProps {
   children: React.ReactNode
 }
@@ -22,6 +24,7 @@ export default function Layout({ children }: LayoutProps) {
       min-h-screen transition-colors duration-300 pt-[62px]">
         {children}
       </div>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }

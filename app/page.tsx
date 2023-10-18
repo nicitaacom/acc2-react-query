@@ -1,21 +1,10 @@
-"use client"
-import { useQuery, useQueryClient } from "@tanstack/react-query"
-
-export default function Home() {
-  const queryClient = useQueryClient()
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["repoData"],
-    queryFn: () => fetch("https://api.github.com/repos/TanStack/query").then(res => res.json()),
-  })
-  if (isLoading) return "Loading..."
-
-  if (error) return "An error has occurred: " + error.message
+import Todos from "./components/Todos"
+import MakeToDo from "./components/MakeToDo"
+export default async function Home() {
   return (
-    <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong> <strong>✨ {data.stargazers_count}</strong>{" "}
-      <strong>🍴 {data.forks_count}</strong>
-    </div>
+    <h1 className="flex flex-col gap-y-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl max-w-7xl xl:max-w-5xl mx-auto">
+      <MakeToDo />
+      <Todos />
+    </h1>
   )
 }
