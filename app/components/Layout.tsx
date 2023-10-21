@@ -17,6 +17,7 @@ export default function Layout({ children }: LayoutProps) {
 
   //don't use const const queryClient = new QueryClient() - https://tanstack.com/query/latest/docs/react/guides/ssr
   const [queryClient] = useState(() => new QueryClient())
+
   return (
     <QueryClientProvider client={queryClient}>
       <div
